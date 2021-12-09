@@ -6,6 +6,7 @@
 
 ```
 1. npx-create-react-app client
+2. npm i axios
 
 
 
@@ -35,6 +36,7 @@
 2. npm i express --> for backend
 3. npm i nodemon---> start server automatically------> use nodemon server to run the backend locally
 4. npm i mongoose
+5. npm i router
 
 
 
@@ -95,3 +97,113 @@ module.exports = mongoose
 use dotenv file  to protect data 
 
 ``
+
+
+# Process 2
+
+## we can think to get the available rooms data to the home screen 
+
+- Create a model for the room 
+---> make a schema for all the available fields that need to be there in the mongodb 
+
+```
+const mongoose = require("mongoose");
+
+const roomSchema = mongoose.Schema({
+
+    name: {
+        type:String,
+        required: true
+    },
+    maxcount : {
+        type:Number,
+        required: true
+
+    },
+
+    phonenumber: {
+        type:Number,
+        required: true
+    },
+
+    rentperday: {
+        type:Number,
+        required: true
+    },
+    imageurls:[],
+    currentbookings: [],
+    type:{
+        type: String,
+        required: true
+    },
+
+    description:{
+        type: String,
+        required: true
+    }
+},{
+    timestamps: true,
+    collection: 'rooms',
+})
+
+// making a model - collection name and schema  
+const roomModel = mongoose.model('rooms', roomSchema)
+
+module.exports = roomModel
+
+```
+
+- I took static data in the Json format to work with them in the application
+--> it created a unique id for every data 
+
+# Express Router --> for Routes
+
+- create a route for the rooms 
+- To the endpoints of the rooms 
+
+```
+If you use the async keyword before a function definition, you can then use await within the function. When you await a promise, the function is paused in a non-blocking way until the promise settles. If the promise fulfills, you get the value back. If the promise rejects, the rejected value is thrown.
+
+
+try_statements
+The statements to be executed.
+
+catch_statements
+Statement that is executed if an exception is thrown in the try-block.
+```
+```
+router.get("/getallrooms", async (req, res) => {
+   
+     try {
+          const rooms = await Room.find({}) // pass an empty object
+          // to get all the rooms
+          console.log(rooms);
+     res.send(rooms)
+     // return res.json({rooms});
+     } catch (error) {
+          return res.status(400).json({ message: 'something went wrong' });
+     }
+
+});
+```
+
+** Learnt to use the POSTMAN to check the requests by passing through various requests 
+
+--> lets through the rooms to the front end side 
+
+```
+proxy in package.json ---> since backend is present in other port 
+proxy---> "domain of the nodej server "
+```
+
+```
+An empty array:
+useEffect(() => {
+  //Runs only on the first render
+}, []);
+```
+** idea would be 
+- get the data through api from backend
+- then return the rooms through mapping each room 
+- make a room component and send room prop  as the object 
+- get all the details that need to be shown
