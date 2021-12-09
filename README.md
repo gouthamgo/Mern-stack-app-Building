@@ -7,8 +7,8 @@
 ```
 1. npx-create-react-app client
 2. npm i axios
-
-
+3. npm i react bootstrap
+4. npm i react-spinners
 
 
 ```
@@ -21,12 +21,6 @@
 - Used bootstrap cdn -4.5 
 - Used Nav component of bootstrap 
 
-
-
-
-
-
-
 # Backend - Server 
 
 - Node.js Environment
@@ -37,6 +31,8 @@
 3. npm i nodemon---> start server automatically------> use nodemon server to run the backend locally
 4. npm i mongoose
 5. npm i router
+6. npm i antd
+7. npm i moment
 
 
 
@@ -202,8 +198,33 @@ useEffect(() => {
   //Runs only on the first render
 }, []);
 ```
-** idea would be 
+*** idea would be 
 - get the data through api from backend
 - then return the rooms through mapping each room 
 - make a room component and send room prop  as the object 
 - get all the details that need to be shown
+***
+
+- for modal pop-up 
+- I used react bootstrap model ---> predefined
+- I also used react bootstrap carousel to get the popup function with images working 
+
+
+
+## booking screen
+
+```
+IDEA
+- when someone clicks on book now button ---> it routes to the booking page
+- It is routed using the booking id from the mongodb
+- pass the room id in the url
+```
+
+# Home screen
+- I used Antd desgin for the dates selection 
+- momentjs for the dates 
+
+https://ant.design/components/date-picker/
+https://momentjs.com/
+
+
