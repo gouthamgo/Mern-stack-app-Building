@@ -1,6 +1,6 @@
 # Mern-stack-app-Building
 
-# Project Setup
+# Project Setup and working process
 
 # Frontend- Client
 
